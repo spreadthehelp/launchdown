@@ -1,5 +1,8 @@
-<div class="accounts view">
-<h2><?php  echo __('Account'); ?></h2>
+<?php echo $this->element('sidebar'); ?>
+
+<div class="span9">
+<h3><?php  echo __('Account Details'); ?></h2>
+	
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -16,7 +19,7 @@
 			<?php echo h($account['Account']['is_active']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('User'); ?></dt>
+		<dt><?php echo __('Owner'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($account['User']['email'], array('controller' => 'users', 'action' => 'view', $account['User']['id'])); ?>
 			&nbsp;
@@ -26,28 +29,15 @@
 			<?php echo h($account['Account']['created']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
+		<dt><?php echo __('Last Modified'); ?></dt>
 		<dd>
 			<?php echo h($account['Account']['modified']); ?>
 			&nbsp;
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Account'), array('action' => 'edit', $account['Account']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Account'), array('action' => 'delete', $account['Account']['id']), null, __('Are you sure you want to delete # %s?', $account['Account']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Accounts'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Account'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Sites'), array('controller' => 'sites', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Site'), array('controller' => 'sites', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Templates'), array('controller' => 'templates', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Template'), array('controller' => 'templates', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+
+<?php /**
 <div class="related">
 	<h3><?php echo __('Related Sites'); ?></h3>
 	<?php if (!empty($account['Site'])): ?>
@@ -179,9 +169,9 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
-</div>
+*/ ?>
+
+	<div class="span12 pagination-centered">
+		<?php echo $this->Html->link(__('Add New User'), array('controller' => 'users', 'action' => 'add'), array('class' => 'btn btn-success pull-right')); ?> 
+	</div><!-- /.actions -->
+</div><!-- /.accounts .view -->

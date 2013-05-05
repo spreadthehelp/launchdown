@@ -1,31 +1,100 @@
 <?php
-App::uses('Model', 'Model');
+App::uses('AppModel', 'Model');
+/**
+ * User Model
+ *
+ * @property Account $Account
+ * @property UserMetum $UserMetum
+ * @property Account $Account
+ */
+class User extends AppModel {
 
 /**
- * User model.
+ * Validation rules
  *
- * @package     CakePHP
- * @subpackage  app.Controller
- * @author      C1V0 <chris@spreadthehelp.com>
+ * @var array
  */
-class User extends Model {
+	public $validate = array(
+		'email' => array(
+			'email' => array(
+				'rule' => array('email'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'first_name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+	);
 
-  public $displayField = 'email';
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-  public $hasAndBelongsToMany = array(
-      'Account' =>
-          array(
-              'className'              => 'Account',
-              'joinTable'              => 'accounts_users',
-              'unique'                 => true,
-              'fields'                 => '',
-              'order'                  => '',
-              'limit'                  => '',
-              'offset'                 => '',
-              'finderQuery'            => '',
-              'deleteQuery'            => '',
-              'insertQuery'            => ''
-          )
-  );
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Account' => array(
+			'className' => 'Account',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'UserMetum' => array(
+			'className' => 'UserMetum',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
+
+/**
+ * hasAndBelongsToMany associations
+ *
+ * @var array
+ */
+	public $hasAndBelongsToMany = array(
+		'Account' => array(
+			'className' => 'Account',
+			'joinTable' => 'accounts_users',
+			'foreignKey' => 'user_id',
+			'associationForeignKey' => 'account_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		)
+	);
 
 }

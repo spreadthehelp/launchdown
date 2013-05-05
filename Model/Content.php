@@ -1,17 +1,87 @@
 <?php
-App::uses('Model', 'Model');
-
+App::uses('AppModel', 'Model');
 /**
- * Content model.
+ * Content Model
  *
- * @package     CakePHP
- * @subpackage  app.Controller
- * @author      C1V0 <chris@spreadthehelp.com>
+ * @property Site $Site
+ * @property Site $Site
  */
 class Content extends AppModel {
 
-  public $name = 'Content';
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'site_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'content' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+	);
 
-  public $belongsTo = array('Site');
- 
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'Site' => array(
+			'className' => 'Site',
+			'foreignKey' => 'site_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Site' => array(
+			'className' => 'Site',
+			'foreignKey' => 'content_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

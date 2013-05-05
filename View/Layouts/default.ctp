@@ -17,7 +17,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-$cakeDescription = __d('cake_dev', 'Launchdown: landing page and coming soon management');
+$cakeDescription = __d('cake_dev', 'Launchdown: open source landing page management system');
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,9 @@ $cakeDescription = __d('cake_dev', 'Launchdown: landing page and coming soon man
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		#echo $this->Html->css('cake.generic');
+#		echo '<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">';
+		echo '<link href="//netdna.bootstrapcdn.com/bootswatch/2.3.1/cerulean/bootstrap.min.css" rel="stylesheet">';
 		echo $this->Html->css('launchdown.generic');
 
 		echo $this->fetch('meta');
@@ -39,25 +41,43 @@ $cakeDescription = __d('cake_dev', 'Launchdown: landing page and coming soon man
 	?>
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://launchdown.dev'); ?></h1>
-		</div>
-		<div id="content">
 
-			<?php echo $this->Session->flash(); ?>
+	<?php echo $this->element('navbar'); ?>
 
+	<div id="container" class="container" style="margin-top:62px;">
+
+	<!-- Masthead
+	================================================== -->
+	<header class="jumbotron subhead" id="overview">
+	  <div class="row">
+	    <div class="span6">
+	      <h1>Launchdown</h1>
+	      <p class="lead">Open source landing page management system</p>
+	    </div>
+	  </div>
+	  <div class="subnav">
+	    <!-- <p class="alert alert-success">Could this be a really cool alert box?</p> -->
+	  </div>
+	</header>
+
+	<div id="content">
+		<?php echo $this->Session->flash(); ?>
+		<div class="row">
 			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
-		</div>
-	</div>
+		</div><!-- /.row -->
+	</div><!-- /.content -->
+
+	<div id="footer" class="well pagination-centered" style="margin-top:24px;">
+		<?php echo $this->Html->link(
+				$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
+				'http://www.cakephp.org/',
+				array('target' => '_blank', 'escape' => false)
+			); ?> 
+	</div><!-- /#footer -->
+
+	</div><!-- /.container -->
+
 	<?php # echo $this->element('sql_dump'); ?>
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

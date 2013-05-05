@@ -12,10 +12,12 @@
  * @license       GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
-body { background: #cecece; }
+body { background: url('../img/gradient-header.jpg') #fcfcfc top repeat-x!important;}
 
 #header h1 { background: #333; }
 
 #header h1 a { background: #181818; }
 
 #header h1 a:hover { background: #333; }
+
+table.table { }
