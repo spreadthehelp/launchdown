@@ -1,0 +1,21 @@
+@charset "utf-8";
+/**
+ *
+ * Launchdown Styles
+ *
+ * Launchdown : Landing Page & Countdown Management Software (http://launchdown.com)
+ * Copyright (c) 2013 Christopher J Vogt (http://chrisvogt.me)
+ *
+ * @copyright     Copyright (c) 2013 Christopher J Vogt (http://chrisvogt.me)
+ * @package       app.launchpad.css
+ * @since         CakePHP(tm)
+ * @license       GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
+ */
+
+body { background: #cecece; }
+
+#header h1 { background: #333; }
+
+#header h1 a { background: #181818; }
+
+#header h1 a:hover { background: #333; }
