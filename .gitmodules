@@ -1,0 +1,3 @@
+[submodule "Console/Templates/Bootstrap"]
+	path = Console/Templates/Bootstrap
+	url = git://github.com/azrad/cakephp-bootstrap-template.git
